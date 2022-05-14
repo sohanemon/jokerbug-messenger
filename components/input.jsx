@@ -1,5 +1,5 @@
 import { addDoc } from "firebase/firestore";
-import { firestore } from "firebase/firestore";
+import { serverTimestamp } from "firebase/firestore";
 import { collectionRef } from "../pages";
 const Input = ({ input, setInput, setMesseges, messeges, user }) => {
   const handleSubmit = (e) => {
@@ -9,7 +9,7 @@ const Input = ({ input, setInput, setMesseges, messeges, user }) => {
           id: Date.now(),
           username: user,
           messege: input,
-          timestamp: firestore.FieldValue.serverTimestamp,
+          timestamp: serverTimestamp(),
         });
       setInput("");
       e.preventDefault;
