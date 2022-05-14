@@ -19,7 +19,7 @@ const Index = () => {
   const [user, setUser] = useState("emon");
 
   useEffect(() => {
-    // setUser(prompt("Enter username: "));
+    setUser(prompt("Enter username: "));
     /* Collecting Data */
     onSnapshot(collectionRef, (snapshot) =>
       setMesseges(snapshot.docs.map((doc) => doc.data()))
