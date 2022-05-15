@@ -1,7 +1,8 @@
 import { addDoc } from "firebase/firestore";
 import { serverTimestamp } from "firebase/firestore";
 import { collectionRef } from "../pages";
-const Input = ({ input, setInput, setMesseges, messeges, user }) => {
+import { IoMdSend } from "react-icons/io";
+const Input = ({ input, setInput, user }) => {
   const handleSubmit = (e) => {
     {
       input.trim() !== "" &&
@@ -17,9 +18,17 @@ const Input = ({ input, setInput, setMesseges, messeges, user }) => {
   };
   return (
     <>
-      <div className='w-full flex items-center justify-center  '>
+      <style jsx>{`
+        .input__input {
+          @apply w-2/3 outline-none  border-b-2 tracking-wider border-gray-200 focus:border-gray-400 transition-all duration-500 px-5 py-1 text-gray-700;
+        }
+        .btn {
+          @apply mx-3  disabled:hover:bg-red-100 duration-500 ease-out disabled:cursor-not-allowed;
+        }
+      `}</style>
+      <div className='w-full flex pb-6 items-center justify-center fixed bg-white bottom-0  z-10 '>
         <input
-          className='w-2/3 h-8 my-10  outline-none  border-b-2 border-blue-100 focus:border-blue-300 transition-all duration-500 px-3 py-1 text-blue-400'
+          className='input__input'
           type='text'
           value={input}
           placeholder={"type ur messege 💨"}
@@ -30,10 +39,10 @@ const Input = ({ input, setInput, setMesseges, messeges, user }) => {
         />
         <button
           disabled={!input}
-          className='rounded-lg bg-blue-200 py-1 px-3 mx-3 hover:bg-blue-400 disabled:hover:bg-red-100 duration-500 ease-out disabled:cursor-not-allowed'
+          className='btn'
           onClick={(e) => handleSubmit(e)}
         >
-          send
+          <IoMdSend size={25} color={"grey"} />
         </button>
       </div>
       <br />
